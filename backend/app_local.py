@@ -6,6 +6,19 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import sys
 import os
+import json
+
+# Load local.settings.json for development
+settings_path = os.path.join(os.path.dirname(__file__), 'local.settings.json')
+if os.path.exists(settings_path):
+    with open(settings_path, 'r') as f:
+        settings = json.load(f)
+        for key, value in settings.get('Values', {}).items():
+            os.environ[key] = value
+    print("✅ Loaded credentials from local.settings.json")
+else:
+    print("⚠️  local.settings.json not found - using system environment variables")
+
 
 # Add backend to path
 sys.path.insert(0, os.path.dirname(__file__))
@@ -40,7 +53,9 @@ def diagnose():
         
         # Generate reports
         generator = RCAGenerator()
-        reports = generator.generate_all_reports(target, diagnostics, ai_analysis, incident_context, recent_changes)
+        technical_report = generator.generate_report(target, diagnostics, ai_analysis, incident_context, recent_changes)
+        executive_report = generator.generate_executive_report(target, diagnostics, ai_analysis, incident_context, recent_changes)
+        json_report = generator.generate_technical_report(target, diagnostics, ai_analysis, incident_context, recent_changes)
         
         # Build response
         response = {
@@ -48,9 +63,9 @@ def diagnose():
             "timestamp": diagnostics[0].get('timestamp', ''),
             "diagnostics": diagnostics,
             "ai_analysis": ai_analysis,
-            "technical_report": reports['technical'],
-            "executive_report": reports['executive'],
-            "json_report": reports['json']
+            "technical_report": technical_report,
+            "executive_report": executive_report,
+            "json_report": json_report
         }
         
         return jsonify(response), 200
