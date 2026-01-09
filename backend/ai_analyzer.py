@@ -174,7 +174,7 @@ CRITICAL RULES:
 - Be specific about which tests passed/failed
 - If all tests pass but latency is high, mention performance degradation
 
-Output valid JSON only."""
+Output valid JSON only.
 - ALWAYS explain WHY a change is relevant (or not)
 - Base analysis ONLY on provided data - do not hallucinate
 - Be deterministic: same inputs = same outputs
