@@ -1,0 +1,66 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.venv
+
+# Azure Functions
+local.settings.json
+.python_packages/
+.vscode/
+.funcignore
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# React
+/frontend/build
+/frontend/.env
+/frontend/.env.local
+
+# IDE
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Logs
+*.log
+logs/
+
+# Environment
+.env
+.env.local
+# .env.production is OK to commit (only contains public API URL)
+
+# Azure
+.azure/
+
+# Sensitive - DO NOT COMMIT
+backend/local.settings.json
+frontend/.env
+deploy-actual.ps1
+
+# Test outputs
+*.pyc
+.pytest_cache/
+.coverage
+
+# OS
+Thumbs.db
+*.bak
+*.tmp
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
