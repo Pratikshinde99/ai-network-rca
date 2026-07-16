@@ -18,13 +18,9 @@
 
 ## 🏗️ Architecture
 
-```
-Frontend (React) → Backend (Python) → Network Diagnostics
-                                    ↓
-                              Azure OpenAI (GPT-4)
-                                    ↓
-                              RCA Reports → Blob Storage
-```
+![Architecture Diagram](./architecture.png)
+
+The platform leverages a React frontend and a Python backend (Azure Functions) to perform real-time network diagnostics. Azure OpenAI (GPT-4) acts as the intelligence layer to analyze the diagnostic results and identify root causes, which are then stored in Azure Blob Storage.
 
 ---
 
@@ -138,7 +134,7 @@ Visit: http://localhost:3000
 ## 📚 Documentation
 
 - [QUICKSTART.md](QUICKSTART.md) - Quick setup guide
-- [DEPLOY_TO_RENDER.md](DEPLOY_TO_RENDER.md) - Detailed deployment guide
+- [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md) - Detailed deployment guide
 - [ENTERPRISE_FEATURES.md](ENTERPRISE_FEATURES.md) - Enterprise features documentation
 - [TESTING_GUIDE.md](TESTING_GUIDE.md) - Testing guide with 50+ test cases
 - [ARCHITECTURE.md](ARCHITECTURE.md) - Technical architecture
